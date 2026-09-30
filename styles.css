@@ -213,8 +213,26 @@ h1 em, h2 em { font-style: italic; color: var(--soft); }
   transform: translateY(0);
 }
 
+.details-intro {
+  display: flex;
+  flex-direction: column;
+}
+
 .detail-message {
-  display: none;
+  min-height: 80px;
+  margin-top: 45px;
+  max-width: 360px;
+  color: var(--gold);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.35;
+  transition: opacity .25s ease, transform .25s ease;
+}
+
+.detail-message span {
+  display: block;
+  opacity: .45;
 }
 
 .music-card {
