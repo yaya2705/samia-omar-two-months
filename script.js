@@ -39,8 +39,8 @@ document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 const detailCopy = {
   "your eyes": "The kind I can look at for a little too long.",
   "the way you speak": "I could probably recognise your voice anywhere.",
-  "your fingers": "A very specific detail, but I notice them.",
-  "your laugh": "Especially when you are trying not to laugh.",
+  "your fingers": "HEHEHHHEEEHE.",
+  "your laugh": "And the face you make.",
   "your lips": "I'll leave this one between us.",
   "the way you think": "You see things in ways I don't always expect.",
   "the way you treat me": "This one matters more than the rest.",
