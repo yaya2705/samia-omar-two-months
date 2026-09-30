@@ -35,25 +35,6 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.15 });
 document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 
-// The little "things I notice" interactions.
-const detailCopy = {
-  "your eyes": "The kind I can look at for a little too long.",
-  "the way you speak": "I could probably recognise your voice anywhere.",
-  "your fingers": "HEHEHHHEEEHE.",
-  "your laugh": "And the face you make.",
-  "your lips": "I'll leave this one between us.",
-  "the way you think": "You see things in ways I don't always expect.",
-  "the way you treat me": "This one matters more than the rest.",
-  "how loving you are": "Even from far away, I feel it.",
-  "how funny you are": "Unfortunately, you are very good at this."
-};
-document.querySelectorAll(".detail").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const key = btn.firstChild.textContent.trim();
-    document.getElementById("detailMessage").textContent = detailCopy[key] || "";
-  });
-});
-
 // The question.
 document.getElementById("chooseBtn").addEventListener("click", () => {
   document.getElementById("choiceResult").classList.add("show");
