@@ -89,7 +89,7 @@ h1 em, h2 em { font-style: italic; color: var(--soft); }
   position: absolute; width: 150px; height: 150px; border: 0; background: transparent;
   color: var(--ink); cursor: pointer; z-index: 5;
 }
-.star-samia { left: 4%; top: 45%; }
+.star-samia { left: 5%; top: 28%; }
 .star-omar { right: 4%; top: 43%; }
 .star-core {
   display: block;
@@ -227,6 +227,7 @@ h1 em, h2 em { font-style: italic; color: var(--soft); }
   background: repeating-radial-gradient(circle, #10131d 0 2px, #171a25 3px 5px);
   box-shadow: 0 25px 70px rgba(0,0,0,.4), inset 0 0 0 1px rgba(255,255,255,.08);
   display: grid; place-items: center; animation: spin 18s linear infinite;
+  animation: spin 8s linear infinite;
 }
 .record span { width: 55px; height: 55px; border-radius: 50%; background: radial-gradient(circle, #f4d8a0 0 5%, #c48d8d 6% 45%, #1b1d29 46%); }
 @keyframes spin { to { transform: rotate(360deg); } }
