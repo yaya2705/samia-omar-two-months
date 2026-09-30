@@ -89,8 +89,8 @@ h1 em, h2 em { font-style: italic; color: var(--soft); }
   position: absolute; width: 150px; height: 150px; border: 0; background: transparent;
   color: var(--ink); cursor: pointer; z-index: 5;
 }
-.star-samia { left: 5%; top: 28%; }
-.star-omar { right: 4%; top: 43%; }
+.star-samia { left: 5%; top: 48%; }
+.star-omar { right: 4%; top: 63%; }
 .star-core {
   display: block;
   width: 24px;
