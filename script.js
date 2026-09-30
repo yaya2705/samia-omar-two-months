@@ -69,3 +69,22 @@ function burstStars() {
 document.getElementById("secretStar").addEventListener("click", () => {
   document.getElementById("secretMessage").classList.add("show");
 });
+
+const detailMessage = document.getElementById("detailMessage");
+const detailMessageText = detailMessage.querySelector("span");
+
+document.querySelectorAll(".detail").forEach(btn => {
+  btn.addEventListener("mouseenter", () => {
+    detailMessageText.textContent = btn.dataset.detail;
+    detailMessageText.style.opacity = "1";
+  });
+
+  btn.addEventListener("mouseleave", () => {
+    detailMessageText.style.opacity = ".45";
+  });
+
+  btn.addEventListener("focus", () => {
+    detailMessageText.textContent = btn.dataset.detail;
+    detailMessageText.style.opacity = "1";
+  });
+});
