@@ -101,4 +101,45 @@ document.querySelectorAll(".detail").forEach(btn => {
   btn.addEventListener("mouseleave", resetDetail);
   btn.addEventListener("blur", resetDetail);
 });
-  
+
+function updateClocks() {
+  const ukElement = document.getElementById("ukTime");
+  const italyElement = document.getElementById("italyTime");
+  const diffElement = document.getElementById("timeDiff");
+
+  if (!ukElement || !italyElement) return;
+
+  const now = new Date();
+
+  // Format hours and minutes for standard 24h clock display
+  const timeFormatter = (timeZone) =>
+    new Intl.DateTimeFormat("en-GB", {
+      hour: "2-digit",
+      minute: "2-digit",
+      timeZone: timeZone,
+      hour12: false
+    });
+
+  ukElement.textContent = timeFormatter("Europe/London").format(now);
+  italyElement.textContent = timeFormatter("Europe/Rome").format(now);
+
+  // Dynamically calculate the hour difference (handles DST adjustments)
+  const getHour = (tz) =>
+    parseInt(
+      new Intl.DateTimeFormat("en-GB", {
+        hour: "numeric",
+        timeZone: tz,
+        hourCycle: "h23"
+      }).format(now),
+      10
+    );
+
+  const hourDiff = getHour("Europe/Rome") - getHour("Europe/London");
+  if (diffElement) {
+    diffElement.textContent = hourDiff > 0 ? `+${hourDiff}h` : `${hourDiff}h`;
+  }
+}
+
+// Start ticking
+updateClocks();
+setInterval(updateClocks, 1000);
