@@ -214,3 +214,19 @@ if (prevBtn && nextBtn) {
     updateCarousel();
   });
 }
+
+// Section 07 Interaction: Subscription Renewal
+const chooseBtn = document.getElementById("chooseBtn");
+const choiceResult = document.getElementById("choiceResult");
+
+if (chooseBtn && choiceResult) {
+  chooseBtn.addEventListener("click", () => {
+    chooseBtn.style.opacity = "0";
+    chooseBtn.style.pointerEvents = "none";
+    
+    setTimeout(() => {
+      chooseBtn.style.display = "none";
+      choiceResult.classList.add("visible");
+    }, 300);
+  });
+}
