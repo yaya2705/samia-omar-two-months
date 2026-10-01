@@ -32,7 +32,7 @@ if (sky) {
 ========================================= */
 
 const starNotes = {
-  samia: "somewhere in England, thinking of you.",
+  samia: "somewhere in the UK, thinking of you.",
   omar: "somewhere in Italy, hopefully thinking of me too."
 };
 
