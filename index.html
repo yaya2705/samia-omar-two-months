@@ -191,11 +191,18 @@
         <p class="small-note">And sometime around October / November, the distance gets a little smaller.</p>
       </div>
       <!-- Example layout addition to Section 06 -->
-      <div class="clocks">
-        <div class="clock"><span id="timeSamia">--:--</span><small>England</small></div>
-        <div class="clock-diff">1h ahead</div>
-        <div class="clock"><span id="timeOmar">--:--</span><small>Italy</small></div>
+      <!-- Live Clocks Widget -->
+    <div class="local-clocks" aria-label="Local times in England and Italy">
+      <div class="clock-col">
+        <span class="clock-time" id="ukTime">--:--</span>
+        <span class="clock-label">UK local time</span>
       </div>
+      <div class="clock-diff" id="timeDiff">+1h</div>
+      <div class="clock-col">
+        <span class="clock-time" id="italyTime">--:--</span>
+        <span class="clock-label">Italy local time</span>
+      </div>
+    </div>
     </section>
 
     <section class="choice section" id="choice">
