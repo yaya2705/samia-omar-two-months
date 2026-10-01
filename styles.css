@@ -372,3 +372,12 @@ footer { width: 88vw; margin: auto; border-top: 1px solid var(--line); padding: 
     padding: 18px 12px;
   }
 }
+.clock-weather {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--soft);
+  margin-top: 6px;
+  min-height: 20px;
+  opacity: 0.85;
+}
