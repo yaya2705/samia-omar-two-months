@@ -1,33 +1,68 @@
-// Generate a quiet field of stars.
+// Generate a quiet field of stars
 const sky = document.getElementById("sky");
-for (let i = 0; i < 95; i++) {
-  const s = document.createElement("span");
-  s.className = "sky-star";
-  s.style.left = `${Math.random() * 100}%`;
-  s.style.top = `${Math.random() * 100}%`;
-  s.style.animationDelay = `${Math.random() * 4}s`;
-  s.style.opacity = `${0.18 + Math.random() * 0.45}`;
-  sky.appendChild(s);
+if (sky) {
+  for (let i = 0; i < 95; i++) {
+    const s = document.createElement("span");
+    s.className = "sky-star";
+    s.style.left = `${Math.random() * 100}%`;
+    s.style.top = `${Math.random() * 100}%`;
+    s.style.animationDelay = `${Math.random() * 4}s`;
+    s.style.opacity = `${0.18 + Math.random() * 0.45}`;
+    sky.appendChild(s);
+  }
 }
 
-// Star interactions: small, personal notes rather than a giant tooltip.
+// Star interactions
 const starNotes = {
   samia: "somewhere in England, thinking of you.",
   omar: "somewhere in Italy, hopefully thinking of me too."
 };
+
 document.querySelectorAll(".star").forEach(star => {
   star.addEventListener("click", () => {
     const person = star.dataset.person;
     const note = starNotes[person];
-    star.querySelector(".star-note").textContent = note;
-    star.classList.add("visited");
-    setTimeout(() => {
-      star.querySelector(".star-note").textContent = person === "samia" ? "England" : "Italy";
-    }, 3800);
+    const noteEl = star.querySelector(".star-note");
+    if (noteEl) {
+      noteEl.textContent = note;
+      star.classList.add("visited");
+      setTimeout(() => {
+        noteEl.textContent = person === "samia" ? "England" : "Italy";
+      }, 3800);
+    }
   });
 });
 
-// Scroll reveal.
+// Carousel Gallery Logic
+const slides = document.querySelectorAll(".carousel-slide");
+const prevBtn = document.getElementById("prevSlide");
+const nextBtn = document.getElementById("nextSlide");
+const counter = document.getElementById("carouselCounter");
+let currentSlide = 0;
+
+function updateCarousel() {
+  if (!slides.length) return;
+  slides.forEach((slide, index) => {
+    slide.classList.toggle("active", index === currentSlide);
+  });
+  if (counter) {
+    counter.textContent = `${currentSlide + 1} / ${slides.length}`;
+  }
+}
+
+if (prevBtn && nextBtn) {
+  prevBtn.addEventListener("click", () => {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    updateCarousel();
+  });
+
+  nextBtn.addEventListener("click", () => {
+    currentSlide = (currentSlide + 1) % slides.length;
+    updateCarousel();
+  });
+}
+
+// Scroll reveal
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) entry.target.classList.add("visible");
@@ -35,12 +70,17 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.15 });
 document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 
-// The question.
-document.getElementById("chooseBtn").addEventListener("click", () => {
-  document.getElementById("choiceResult").classList.add("show");
-  document.getElementById("choice").scrollIntoView({ behavior: "smooth", block: "center" });
-  burstStars();
-});
+// Renewal Subscription Button
+const chooseBtn = document.getElementById("chooseBtn");
+if (chooseBtn) {
+  chooseBtn.addEventListener("click", () => {
+    const result = document.getElementById("choiceResult");
+    const choice = document.getElementById("choice");
+    if (result) result.classList.add("show");
+    if (choice) choice.scrollIntoView({ behavior: "smooth", block: "center" });
+    burstStars();
+  });
+}
 
 function burstStars() {
   for (let i = 0; i < 22; i++) {
@@ -65,43 +105,46 @@ function burstStars() {
   }
 }
 
-// Secret star.
-document.getElementById("secretStar").addEventListener("click", () => {
-  document.getElementById("secretMessage").classList.add("show");
-});
+// Secret star
+const secretStar = document.getElementById("secretStar");
+if (secretStar) {
+  secretStar.addEventListener("click", () => {
+    const msg = document.getElementById("secretMessage");
+    if (msg) msg.classList.add("show");
+  });
+}
 
+// Detail hover interactions
 const detailMessage = document.getElementById("detailMessage");
-const detailMessageText = detailMessage.querySelector("span");
-const defaultMessage = "hover over something.";
+if (detailMessage) {
+  const detailMessageText = detailMessage.querySelector("span");
+  const defaultMessage = "hover over a line.";
 
-document.querySelectorAll(".detail").forEach(btn => {
-  const showDetail = (e) => {
-    detailMessageText.textContent = btn.dataset.detail;
-    detailMessageText.style.opacity = "1";
-  };
+  document.querySelectorAll(".detail").forEach(btn => {
+    const showDetail = () => {
+      if (detailMessageText) {
+        detailMessageText.textContent = btn.dataset.detail;
+        detailMessageText.style.opacity = "1";
+      }
+    };
 
-  btn.addEventListener("mouseenter", showDetail);
-  btn.addEventListener("focus", showDetail);
-  
-  // Mobile tap handling
-  btn.addEventListener("touchstart", (e) => {
-    showDetail();
-  }, { passive: true });
-});
+    const resetDetail = () => {
+      if (detailMessageText) {
+        detailMessageText.textContent = defaultMessage;
+        detailMessageText.style.opacity = ".45";
+      }
+    };
 
-  // Reset back to default prompt
-  const resetDetail = () => {
-    detailMessageText.textContent = defaultMessage;
-    detailMessageText.style.opacity = ".45";
-  };
+    btn.addEventListener("mouseenter", showDetail);
+    btn.addEventListener("focus", showDetail);
+    btn.addEventListener("mouseleave", resetDetail);
+    btn.addEventListener("blur", resetDetail);
+    
+    btn.addEventListener("touchstart", showDetail, { passive: true });
+  });
+}
 
-  btn.addEventListener("mouseenter", showDetail);
-  btn.addEventListener("focus", showDetail);
-  
-  btn.addEventListener("mouseleave", resetDetail);
-  btn.addEventListener("blur", resetDetail);
-});
-
+// Local Clocks Logic
 function updateClocks() {
   const ukElement = document.getElementById("ukTime");
   const italyElement = document.getElementById("italyTime");
@@ -111,7 +154,6 @@ function updateClocks() {
 
   const now = new Date();
 
-  // Format hours and minutes for standard 24h clock display
   const timeFormatter = (timeZone) =>
     new Intl.DateTimeFormat("en-GB", {
       hour: "2-digit",
@@ -123,7 +165,6 @@ function updateClocks() {
   ukElement.textContent = timeFormatter("Europe/London").format(now);
   italyElement.textContent = timeFormatter("Europe/Rome").format(now);
 
-  // Dynamically calculate the hour difference (handles DST adjustments)
   const getHour = (tz) =>
     parseInt(
       new Intl.DateTimeFormat("en-GB", {
@@ -140,11 +181,10 @@ function updateClocks() {
   }
 }
 
-// Start ticking
 updateClocks();
 setInterval(updateClocks, 1000);
 
-// Map WMO Weather Codes to quiet, minimal phrases
+// Weather Logic
 function getWeatherDescription(code) {
   if (code === 0) return "clear sky";
   if (code >= 1 && code <= 3) return "partly cloudy";
@@ -163,70 +203,17 @@ async function fetchWeather() {
   if (!ukWeather || !italyWeather) return;
 
   try {
-    // London: 51.5074, -0.1278 | Rome: 41.9028, 12.4964
     const url = "https://api.open-meteo.com/v1/forecast?latitude=51.5074,41.9028&longitude=-0.1278,12.4964&current_weather=true";
     const res = await fetch(url);
     const data = await res.json();
 
-    if (Array.isArray(data) && data.length === 2) {
-      const ukData = data[0].current_weather;
-      const italyData = data[1].current_weather;
-
-      ukWeather.textContent = `${Math.round(ukData.temperature)}°C · ${getWeatherDescription(ukData.weathercode)}`;
-      italyWeather.textContent = `${Math.round(italyData.temperature)}°C · ${getWeatherDescription(italyData.weathercode)}`;
+    if (data && data.length === 2) {
+      ukWeather.textContent = getWeatherDescription(data[0].current_weather.weathercode);
+      italyWeather.textContent = getWeatherDescription(data[1].current_weather.weathercode);
     }
   } catch (err) {
-    // Quiet fallback if API fails
-    ukWeather.textContent = "";
-    italyWeather.textContent = "";
+    console.error("Could not load weather data:", err);
   }
 }
 
-// Fetch weather on load, then refresh every 15 minutes
 fetchWeather();
-setInterval(fetchWeather, 15 * 60 * 1000);
-
-// Carousel functionality for Section 02
-const slides = document.querySelectorAll(".carousel-slide");
-const prevBtn = document.getElementById("prevSlide");
-const nextBtn = document.getElementById("nextSlide");
-const counter = document.getElementById("carouselCounter");
-
-let currentSlide = 0;
-
-function updateCarousel() {
-  slides.forEach((slide, idx) => {
-    slide.classList.toggle("active", idx === currentSlide);
-  });
-  if (counter) {
-    counter.textContent = `${currentSlide + 1} / ${slides.length}`;
-  }
-}
-
-if (prevBtn && nextBtn) {
-  prevBtn.addEventListener("click", () => {
-    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-    updateCarousel();
-  });
-
-  nextBtn.addEventListener("click", () => {
-    currentSlide = (currentSlide + 1) % slides.length;
-    updateCarousel();
-  });
-}
-
-// Section 07 Interaction: Subscription Renewal
-const chooseBtn = document.getElementById("chooseBtn");
-const choiceResult = document.getElementById("choiceResult");
-
-if (chooseBtn && choiceResult) {
-  chooseBtn.addEventListener("click", () => {
-    chooseBtn.style.opacity = "0";
-    chooseBtn.style.pointerEvents = "none";
-    
-    setTimeout(() => {
-      chooseBtn.style.display = "none";
-      choiceResult.classList.add("visible");
-    }, 300);
-  });
-}
