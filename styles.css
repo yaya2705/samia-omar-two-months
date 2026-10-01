@@ -70,7 +70,7 @@ h1 em, h2 em { font-style: italic; color: var(--soft); }
 .lede, .body-copy, .memory-copy p, .music-intro {
   font-size: 15px; line-height: 1.9; color: var(--soft); max-width: 560px;
 }
-.small-note { color: #777786; font-size: 11px; line-height: 1.7; letter-spacing: .02em; }
+.small-note { color: #777786; font-size: 11px; line-height: 1.7; letter-spacing: .02em; margin: 30px 0 38px }
 
 .hero {
   min-height: 100svh; display: grid; place-items: center; position: relative;
