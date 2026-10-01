@@ -179,22 +179,6 @@ h1 em, h2 em { font-style: italic; color: var(--soft); }
   transition: color .25s;
 }
 
-.detail::after {
-  content: attr(data-detail);
-  position: absolute;
-  left: 0;
-  bottom: calc(100% + 7px);
-  color: var(--gold);
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 18px;
-  line-height: 1.2;
-  opacity: 0;
-  transform: translateY(5px);
-  pointer-events: none;
-  transition: opacity .25s ease, transform .25s ease;
-  max-width: 90%;
-}
 
 .detail:hover,
 .detail:focus-visible {
@@ -205,12 +189,6 @@ h1 em, h2 em { font-style: italic; color: var(--soft); }
 .detail:hover span,
 .detail:focus-visible span {
   color: var(--gold);
-}
-
-.detail:hover::after,
-.detail:focus-visible::after {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .details-intro {
