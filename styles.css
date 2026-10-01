@@ -381,3 +381,66 @@ footer { width: 88vw; margin: auto; border-top: 1px solid var(--line); padding: 
   min-height: 20px;
   opacity: 0.85;
 }
+
+/* Carousel Controls & Styling */
+.carousel-container {
+  position: relative;
+  width: 100%;
+}
+
+.carousel-slide {
+  display: none;
+}
+
+.carousel-slide.active {
+  display: block;
+}
+
+.carousel-slide img {
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  display: block;
+  filter: saturate(.82) contrast(.97);
+}
+
+.carousel-caption {
+  margin-top: 13px;
+  color: #777786;
+  font-size: 9px;
+  letter-spacing: .08em;
+}
+
+.carousel-caption span {
+  color: var(--gold);
+  margin-right: 9px;
+}
+
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 15px;
+  padding: 0 5px;
+}
+
+.carousel-btn {
+  background: none;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 14px;
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: border-color .25s, color .25s;
+}
+
+.carousel-btn:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.carousel-counter {
+  font-size: 10px;
+  letter-spacing: .15em;
+  color: #686877;
+}
