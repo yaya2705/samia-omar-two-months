@@ -185,3 +185,32 @@ async function fetchWeather() {
 // Fetch weather on load, then refresh every 15 minutes
 fetchWeather();
 setInterval(fetchWeather, 15 * 60 * 1000);
+
+// Carousel functionality for Section 02
+const slides = document.querySelectorAll(".carousel-slide");
+const prevBtn = document.getElementById("prevSlide");
+const nextBtn = document.getElementById("nextSlide");
+const counter = document.getElementById("carouselCounter");
+
+let currentSlide = 0;
+
+function updateCarousel() {
+  slides.forEach((slide, idx) => {
+    slide.classList.toggle("active", idx === currentSlide);
+  });
+  if (counter) {
+    counter.textContent = `${currentSlide + 1} / ${slides.length}`;
+  }
+}
+
+if (prevBtn && nextBtn) {
+  prevBtn.addEventListener("click", () => {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    updateCarousel();
+  });
+
+  nextBtn.addEventListener("click", () => {
+    currentSlide = (currentSlide + 1) % slides.length;
+    updateCarousel();
+  });
+}
