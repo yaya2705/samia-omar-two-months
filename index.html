@@ -1,619 +1,112 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#080a12">
-  <meta name="description" content="A little universe made for Samia and Omar.">
-  <title>Same Sky — Samia & Omar</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap"
-    rel="stylesheet"
-  >
-
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Samia & Omar</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-  <div class="noise" aria-hidden="true"></div>
-  <div class="sky" id="sky" aria-hidden="true"></div>
+  <!-- STARS BACKGROUND -->
+  <div id="stars-container"></div>
 
-  <header class="topbar">
-    <div class="monogram">S <span>·</span> O</div>
-    <div class="anniv">30.07.26 — 30.09.26</div>
-  </header>
+  <!-- SECTION 01 -->
+  <section class="hero section">
+    <div class="hero-content reveal">
+      <h1>Samia & Omar</h1>
+      <p class="subtitle">Two Months</p>
+    </div>
+  </section>
 
-  <main>
+  <!-- SECTION 02 -->
+  <section class="memory section">
 
-    <!-- HERO -->
-    <section class="hero">
+    <div class="section-number">02</div>
 
-      <div class="hero-copy">
-        <p class="eyebrow">same sky</p>
+    <div class="memory-grid">
 
-        <h1>
-          Samia<br>
-          <em>& Omar</em>
-        </h1>
+      <!-- PHOTO ALBUM -->
+      <div class="carousel-container reveal">
 
-        <p class="lede">
-          A quiet place for two months of us, the distance, and everything in between.
-        </p>
-      </div>
-
-      <div class="constellation">
-
-        <div class="thread" aria-hidden="true"></div>
-
-        <button
-          class="star star-samia"
-          data-person="samia"
-          aria-label="Samia's star"
-        >
-          <span class="star-core"></span>
-          <span class="star-label">SAMIA</span>
-          <span class="star-note">England</span>
-        </button>
-
-        <button
-          class="star star-omar"
-          data-person="omar"
-          aria-label="Omar's star"
-        >
-          <span class="star-core"></span>
-          <span class="star-label">OMAR</span>
-          <span class="star-note">Italy</span>
-        </button>
-
-      </div>
-
-      <p class="scroll-hint">scroll down ↓</p>
-
-    </section>
-
-
-    <!-- SECTION 01 -->
-    <section class="intro section">
-
-      <div class="section-number">01</div>
-
-      <div class="two-col">
-
-        <div>
-          <p class="eyebrow">intro</p>
-
-          <h2>
-            Awwh this is<br>
-            <em>crazyyy.</em>
-          </h2>
+        <div class="carousel-slide active">
+          <img src="images/IMG_8890.jpg" alt="Memory 1">
+          <p class="carousel-caption" style="display: none;"></p>
         </div>
 
-        <div class="body-copy">
-
-          <p>
-            We started out in the same primary school classroom in Morocco.
-            Then came years of distance, different cities, and a whole lot of life.
-            Somehow, the path looped back.
-          </p>
-
-          <figure class="photo reveal">
-            <img
-              src="assets/primary-school.jpg"
-              alt="Our primary school classroom in Morocco"
-            >
-            <figcaption>
-              <span>MOROCCO</span> — where it all started.
-            </figcaption>
-          </figure>
-
+        <div class="carousel-slide">
+          <img src="images/IMG_8904.jpg" alt="Memory 2">
+          <p class="carousel-caption" style="display: none;"></p>
         </div>
 
-      </div>
-
-    </section>
-
-
-    <!-- SECTION 02 -->
-    <section class="memory section">
-
-      <div class="section-number">02</div>
-
-      <div class="memory-grid">
-
-        <!-- PHOTO ALBUM -->
-        <div class="carousel-container reveal">
-
-          <div class="carousel-slide active">
-            <img
-              src="assets/oslo-mirror.jpg"
-              alt="Samia and Omar reflected together in Oslo"
-            >
-
-            <p class="carousel-caption">
-              <span>OSLO</span> — a day worth keeping.
-            </p>
-          </div>
-
-          <div class="carousel-slide">
-            <img
-              src="assets/oslo-lake-day.jpg"
-              alt="Omar outdoors by the lake in Oslo"
-            >
-
-            <p class="carousel-caption">
-              <span>OSLO</span> — somewhere by the lake.
-            </p>
-          </div>
-
-          <div class="carousel-controls">
-
-            <button
-              class="carousel-btn"
-              id="prevSlide"
-              type="button"
-              aria-label="Previous photo"
-            >
-              ←
-            </button>
-
-            <span
-              class="carousel-counter"
-              id="carouselCounter"
-            >
-              1 / 2
-            </span>
-
-            <button
-              class="carousel-btn"
-              id="nextSlide"
-              type="button"
-              aria-label="Next photo"
-            >
-              →
-            </button>
-
-          </div>
-
+        <div class="carousel-slide">
+          <img src="images/IMG_8932.jpg" alt="Memory 3">
+          <p class="carousel-caption" style="display: none;"></p>
         </div>
 
-
-        <!-- LA TENTE TEXT -->
-        <div class="memory-copy">
-
-          <p class="eyebrow">oslo</p>
-
-          <h2>
-            <em>La tente.</em>
-          </h2>
-
-          <p>
-            proof that we actually survive camping in the cold.
-            and naturally, <strong>7iydna lbrouda.</strong>
-            what happens in Oslo, stays in Oslo
-          </p>
-
+        <div class="carousel-slide">
+          <img src="images/IMG_8958.jpg" alt="Memory 4">
+          <p class="carousel-caption" style="display: none;"></p>
         </div>
 
-      </div>
-
-    </section>
-
-
-    <!-- SECTION 03 -->
-    <section class="things section">
-
-      <div class="section-number">03</div>
-
-      <div class="two-col">
-
-        <div class="details-intro">
-
-          <p class="eyebrow">things I notice</p>
-
-          <h2>
-            The details<br>
-            <em>matter.</em>
-          </h2>
-
-          <div
-            class="detail-message"
-            id="detailMessage"
-            aria-live="polite"
-          >
-            <span>hover over a line.</span>
-          </div>
-
+        <div class="carousel-slide">
+          <img src="images/IMG_8973.jpg" alt="Memory 5">
+          <p class="carousel-caption" style="display: none;"></p>
         </div>
 
+        <div class="carousel-slide">
+          <img src="images/IMG_8975.jpg" alt="Memory 6">
+          <p class="carousel-caption" style="display: none;"></p>
+        </div>
 
-        <div class="detail-list">
+        <div class="carousel-slide">
+          <img src="images/IMG_8977.jpg" alt="Memory 7">
+          <p class="carousel-caption" style="display: none;"></p>
+        </div>
+
+        <div class="carousel-slide">
+          <img src="images/IMG_8891.jpg" alt="Memory 8">
+          <p class="carousel-caption" style="display: none;"></p>
+        </div>
+
+        <div class="carousel-controls">
 
           <button
-            class="detail"
+            class="carousel-btn"
+            id="prevSlide"
             type="button"
-            data-detail="3inik 3sliyin. extremely easy to get lost in."
+            aria-label="Previous photo"
           >
-            your eyes
-            <span>↗</span>
+            ←
           </button>
 
-          <button
-            class="detail"
-            type="button"
-            data-detail="distinctive. i notice them more than i admit."
+          <span
+            class="carousel-counter"
+            id="carouselCounter"
           >
-            your fingers
-            <span>↗</span>
-          </button>
+            1 / 8
+          </span>
 
           <button
-            class="detail"
+            class="carousel-btn"
+            id="nextSlide"
             type="button"
-            data-detail="i love seeing you happy."
+            aria-label="Next photo"
           >
-            your laugh
-            <span>↗</span>
-          </button>
-
-          <button
-            class="detail"
-            type="button"
-            data-detail="khlini sakta"
-          >
-            your lips
-            <span>↗</span>
-          </button>
-
-          <button
-            class="detail"
-            type="button"
-            data-detail="the specific tone you get when you're explaining something you care about"
-          >
-            the way you speak
-            <span>↗</span>
-          </button>
-
-          <button
-            class="detail"
-            type="button"
-            data-detail="you see things in interesting ways I don't always expect"
-          >
-            the way you think
-            <span>↗</span>
-          </button>
-
-          <button
-            class="detail"
-            type="button"
-            data-detail="unfortunately, you are good at this"
-          >
-            the way you treat me
-            <span>↗</span>
-          </button>
-
-          <button
-            class="detail"
-            type="button"
-            data-detail="Even from far away, I feel it."
-          >
-            how loving you are
-            <span>↗</span>
-          </button>
-
-          <button
-            class="detail"
-            type="button"
-            data-detail="Unfortunately, you are very good at this."
-          >
-            how funny you are
-            <span>↗</span>
+            →
           </button>
 
         </div>
 
       </div>
 
-    </section>
+    </div>
 
-
-    <!-- SECTION 04 -->
-    <section class="music section">
-
-      <div class="section-number">04</div>
-
-      <div class="music-card">
-
-        <div class="record" aria-hidden="true">
-          <span></span>
-        </div>
-
-        <div>
-
-          <p class="eyebrow">our two versions of the same song</p>
-
-          <h2>
-            <em>Il cielo in una stanza</em>
-          </h2>
-
-          <p class="music-intro">
-            two recordings. same song. it felt right to give both of them a place here.
-          </p>
-
-          <div class="tracks">
-
-            <a
-              class="track"
-              href="https://open.spotify.com/search/Il%20cielo%20in%20una%20stanza%20Gino%20Paoli"
-              target="_blank"
-              rel="noopener"
-            >
-              <span class="track-no">01</span>
-
-              <span>
-                <strong>Gino Paoli</strong>
-                <small>Il cielo in una stanza</small>
-              </span>
-
-              <span class="play">↗</span>
-            </a>
-
-
-            <a
-              class="track"
-              href="https://open.spotify.com/search/Il%20cielo%20in%20una%20stanza%20Mina"
-              target="_blank"
-              rel="noopener"
-            >
-              <span class="track-no">02</span>
-
-              <span>
-                <strong>Mina</strong>
-                <small>Il cielo in una stanza</small>
-              </span>
-
-              <span class="play">↗</span>
-            </a>
-
-          </div>
-
-          <p class="tiny">
-            The buttons open the song in Spotify; browsers generally block
-            surprise autoplay, so you get to choose when the soundtrack starts.
-          </p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- SECTION 05 -->
-    <section class="distance section">
-
-      <div class="section-number">05</div>
-
-      <div class="distance-card">
-
-        <div class="distance-top">
-          <p class="eyebrow">right now</p>
-          <span>30 SEPTEMBER 2026</span>
-        </div>
-
-
-        <!-- CLOCKS -->
-        <div class="local-clocks">
-
-          <div class="clock-col">
-
-            <span
-              class="clock-time"
-              id="ukTime"
-            >
-              --:--
-            </span>
-
-            <span class="clock-label">
-              UK local time
-            </span>
-
-            <span
-              class="clock-weather"
-              id="ukWeather"
-            ></span>
-
-          </div>
-
-
-          <div
-            class="clock-diff"
-            id="timeDiff"
-          >
-            +1h
-          </div>
-
-
-          <div class="clock-col">
-
-            <span
-              class="clock-time"
-              id="italyTime"
-            >
-              --:--
-            </span>
-
-            <span class="clock-label">
-              Italy local time
-            </span>
-
-            <span
-              class="clock-weather"
-              id="italyWeather"
-            ></span>
-
-          </div>
-
-        </div>
-
-
-        <!-- DISTANCE LINE -->
-        <div class="route">
-
-          <div class="place">
-            <i></i>
-            <strong>ENGLAND</strong>
-            <span>Samia</span>
-          </div>
-
-          <div class="route-line">
-            <span></span>
-          </div>
-
-          <div class="place right">
-            <i></i>
-            <strong>ITALY</strong>
-            <span>Omar</span>
-          </div>
-
-        </div>
-
-        <p class="distance-line">
-          different coordinates, same sky
-        </p>
-
-        <p class="small-note">
-          closing the gap in LDNNNN novemberrrr
-        </p>
-
-      </div>
-
-    </section>
-
-
-    <!-- SECTION 06 -->
-    <section class="choice section" id="choice">
-
-      <div class="section-number">06</div>
-
-      <div class="choice-inner">
-
-        <p class="eyebrow">monthly agreement</p>
-
-        <h2>
-          Re-subscribing for<br>
-          <em>month three?</em>
-        </h2>
-
-        <p class="choice-sub">
-          Terms and conditions: mandatory phone calls,
-          zero cold camping tents, and holding a spot for LDN in November.
-        </p>
-
-        <button
-          class="choose-btn"
-          id="chooseBtn"
-          type="button"
-        >
-          <span>Renew Subscription</span>
-          <span>↻</span>
-        </button>
-
-        <div
-          class="choice-result"
-          id="choiceResult"
-          aria-live="polite"
-        >
-          <span class="result-star">✦</span>
-
-          <p>
-            Renewal successful.
-          </p>
-
-          <small>
-            No cancellation allowed anyway.
-          </small>
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- SECTION 07 -->
-    <section class="letter section">
-
-      <div class="section-number">07</div>
-
-      <div class="letter-card">
-
-        <p class="eyebrow">
-          for you, my love
-        </p>
-
-        <div class="letter-content">
-
-          <p>
-            I’ve never had much interest in standard relationship playbooks,
-            and I’m glad we didn't follow one.
-          </p>
-
-          <p>
-            Going from primary school classmates to finding each other again
-            years later wasn't something I planned, but it turned out to be
-            the best kind of surprise.
-          </p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- SECTION 08 -->
-    <section class="secret section">
-
-      <button
-        class="secret-star"
-        id="secretStar"
-        type="button"
-        aria-label="A secret star"
-      >
-        ✦
-      </button>
-
-      <p class="secret-hint">
-        there's one more thing here
-      </p>
-
-      <div
-        class="secret-message"
-        id="secretMessage"
-      >
-        <p>you found it.</p>
-
-        <span>
-          somewhere in all this distance, you're still my favourite person to think about
-        </span>
-      </div>
-
-    </section>
-
-  </main>
-
-
-  <footer>
-    <span>30.07.2026</span>
-    <span>S × O</span>
-    <span>same sky, different places</span>
-  </footer>
-
+  </section>
 
   <script src="script.js"></script>
+</body>
+</html>
 
 </body>
 </html>
