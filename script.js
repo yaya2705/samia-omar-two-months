@@ -622,6 +622,5 @@ async function fetchWeather() {
 }
 
 
-fetchWeather();
 
 <p class="carousel-caption"></p>
