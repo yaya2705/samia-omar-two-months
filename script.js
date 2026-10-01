@@ -143,3 +143,45 @@ function updateClocks() {
 // Start ticking
 updateClocks();
 setInterval(updateClocks, 1000);
+
+// Map WMO Weather Codes to quiet, minimal phrases
+function getWeatherDescription(code) {
+  if (code === 0) return "clear sky";
+  if (code >= 1 && code <= 3) return "partly cloudy";
+  if (code >= 45 && code <= 48) return "foggy";
+  if (code >= 51 && code <= 67) return "light rain";
+  if (code >= 71 && code <= 77) return "snowing";
+  if (code >= 80 && code <= 82) return "showers";
+  if (code >= 95) return "thunderstorm";
+  return "overcast";
+}
+
+async function fetchWeather() {
+  const ukWeather = document.getElementById("ukWeather");
+  const italyWeather = document.getElementById("italyWeather");
+
+  if (!ukWeather || !italyWeather) return;
+
+  try {
+    // London: 51.5074, -0.1278 | Rome: 41.9028, 12.4964
+    const url = "https://api.open-meteo.com/v1/forecast?latitude=51.5074,41.9028&longitude=-0.1278,12.4964&current_weather=true";
+    const res = await fetch(url);
+    const data = await res.json();
+
+    if (Array.isArray(data) && data.length === 2) {
+      const ukData = data[0].current_weather;
+      const italyData = data[1].current_weather;
+
+      ukWeather.textContent = `${Math.round(ukData.temperature)}°C · ${getWeatherDescription(ukData.weathercode)}`;
+      italyWeather.textContent = `${Math.round(italyData.temperature)}°C · ${getWeatherDescription(italyData.weathercode)}`;
+    }
+  } catch (err) {
+    // Quiet fallback if API fails
+    ukWeather.textContent = "";
+    italyWeather.textContent = "";
+  }
+}
+
+// Fetch weather on load, then refresh every 15 minutes
+fetchWeather();
+setInterval(fetchWeather, 15 * 60 * 1000);
