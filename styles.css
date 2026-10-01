@@ -107,11 +107,7 @@ a {
   pointer-events: none;
   overflow: hidden;
 
-  /*
-    The stars must sit between the body background
-    and the actual page content.
-  */
-  z-index: -1;
+  z-index: 0;
 }
 
 .sky-star {
@@ -191,6 +187,7 @@ a {
 main,
 footer {
   position: relative;
+  z-index: 1;
 }
 
 .section {
