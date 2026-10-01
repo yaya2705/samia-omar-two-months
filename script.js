@@ -72,19 +72,25 @@ document.getElementById("secretStar").addEventListener("click", () => {
 
 const detailMessage = document.getElementById("detailMessage");
 const detailMessageText = detailMessage.querySelector("span");
+const defaultMessage = "hover over something.";
 
 document.querySelectorAll(".detail").forEach(btn => {
-  btn.addEventListener("mouseenter", () => {
+  // Show button detail
+  const showDetail = () => {
     detailMessageText.textContent = btn.dataset.detail;
     detailMessageText.style.opacity = "1";
-  });
+  };
 
-  btn.addEventListener("mouseleave", () => {
+  // Reset back to default prompt
+  const resetDetail = () => {
+    detailMessageText.textContent = defaultMessage;
     detailMessageText.style.opacity = ".45";
-  });
+  };
 
-  btn.addEventListener("focus", () => {
-    detailMessageText.textContent = btn.dataset.detail;
-    detailMessageText.style.opacity = "1";
-  });
+  btn.addEventListener("mouseenter", showDetail);
+  btn.addEventListener("focus", showDetail);
+  
+  btn.addEventListener("mouseleave", resetDetail);
+  btn.addEventListener("blur", resetDetail);
 });
+  
