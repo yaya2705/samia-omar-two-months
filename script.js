@@ -75,11 +75,19 @@ const detailMessageText = detailMessage.querySelector("span");
 const defaultMessage = "hover over something.";
 
 document.querySelectorAll(".detail").forEach(btn => {
-  // Show button detail
-  const showDetail = () => {
+  const showDetail = (e) => {
     detailMessageText.textContent = btn.dataset.detail;
     detailMessageText.style.opacity = "1";
   };
+
+  btn.addEventListener("mouseenter", showDetail);
+  btn.addEventListener("focus", showDetail);
+  
+  // Mobile tap handling
+  btn.addEventListener("touchstart", (e) => {
+    showDetail();
+  }, { passive: true });
+});
 
   // Reset back to default prompt
   const resetDetail = () => {
